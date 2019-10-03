@@ -1,0 +1,72 @@
+
+<div class="container">
+  
+<h1 class="center">Order Up!</h1>
+
+  <div class="row">
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field col s6">
+          <i class="material-icons prefix">mode_edit</i>
+          <textarea id="userInput" class="materialize-textarea"></textarea>
+          <label for="userInput">Burger Name</label>
+        </div>
+      </div>
+      <a id="submit" class="waves-effect waves-light btn">Submit</a>
+    </form>
+  </div>
+
+  <div class="row">
+
+    <div class="col s6">
+
+    <ul>
+
+      {{#each burgers}}
+
+        {{#unless devoured}}
+
+          <li>
+
+            {{burger_name}}
+
+            <button class="getDevoured" data-id="{{id}}" data-devoured="{{devoured}}">
+              EAT!
+            </button>
+            
+          </li>
+
+        {{/unless}}
+
+      {{/each}}
+
+    </ul>
+
+    </div>
+
+    <div class="col s6">
+
+    <ul>
+
+      {{#each burgers}}
+
+        {{#if devoured}}
+
+          <li>
+
+            {{burger_name}}
+            
+          </li>
+
+        {{/if}}
+
+      {{/each}}
+
+    </ul>
+
+    </div>
+
+
+  </div>
+
+</div>

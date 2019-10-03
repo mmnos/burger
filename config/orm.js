@@ -46,7 +46,7 @@ let orm = {
 
   },
 
-  insertOne : function(table, cols, vals, cb) {
+  insertOne : function(table, cols, vals, callback) {
 
     let queryString = `INSERT INTO ${table} (${cols.toString()}) VALUES (${printQuestionMarks(vals.length)})`;
 
@@ -54,25 +54,22 @@ let orm = {
 
     connection.query(queryString, vals, (err, result) => {
 
-      if (err) throw err;
-
-      cb(result);
+      if (err) callback({ status : 500 }) 
+      else callback({ status : 200 });
 
     });
 
   },
 
-  updateOne : function(table, objColVals, condition, cb) {
+  updateOne : function(table, colVals, condition, callback) {
 
-    let queryString = `UPDATE ${table} SET ${objToSql(objColVals)} WHERE ${condition}`;
-
-    console.log(queryString);
+    let queryString = `UPDATE ${table} SET ${objToSql(colVals)} WHERE ${condition}`;
 
     connection.query(queryString, (err, result) => {
 
       if (err) throw err;
 
-      cb(result);
+      callback(result);
 
     });
 

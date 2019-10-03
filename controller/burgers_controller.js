@@ -21,21 +21,25 @@ router.get("/", (req, res) => {
 
 router.post("/api/burgers", (req, res) => {
 
-  burger.insertOne([
-    "burger_name", "devoured"
-  ], [
-    req.body.burger_name, req.body.devoured
-  ], (result) => {
-    res.json({ id : result.insertId });
+  burger.insertOne(["burger_name"], [req.body.burger_name], (result) => {
+
+    if (result.status === 500) {
+
+      return res.status(500).end();
+
+    } else {
+
+      res.status(200).end();
+
+    }
+
   });
 
 });
 
 router.put("/api/burgers/:id", (req, res) => {
 
-  let condition = `ID : ${req.params.id}`;
-
-  console.log("condition : ", condition);
+  let condition = `ID=${req.params.id}`;
 
   burger.updateOne({
 
