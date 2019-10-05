@@ -22,9 +22,6 @@ $(document).ready(function() {
 
   $(".getDevoured").on("click", (event) => {
 
-    // $(event.currentTarget).attr("data-id");
-
-    // Send the PUT request.
     $.ajax(`/api/burgers/${$(event.currentTarget).attr("data-id")}`, {
       type: "PUT",
       data: { devoured : true }

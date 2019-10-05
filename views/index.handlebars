@@ -1,18 +1,18 @@
 
 <div class="container">
   
-<h1 class="center">Order Up!</h1>
+<h1 class="center">Bangin' Burgers</h1>
 
-  <div class="row">
+  <div class="row center">
     <form class="col s12">
       <div class="row">
-        <div class="input-field col s6">
-          <i class="material-icons prefix">mode_edit</i>
-          <textarea id="userInput" class="materialize-textarea"></textarea>
-          <label for="userInput">Burger Name</label>
+        <div class="input-field col s6 offset-s3">
+          <i class="material-icons prefix">local_dining</i>
+          <input placeholder="What would you like to order?" id="userInput" class="materialize-textarea"></input>
+          <label for="userInput"></label>
         </div>
       </div>
-      <a id="submit" class="waves-effect waves-light btn">Submit</a>
+      <a id="submit" class="waves-effect waves-light btn">Order</a>
     </form>
   </div>
 
@@ -28,11 +28,15 @@
 
           <li>
 
+            <a class="getDevoured" data-id="{{id}}" data-devoured="{{devoured}}"><i class="material-icons">
+                restaurant
+            </i></a>
+
             {{burger_name}}
 
-            <button class="getDevoured" data-id="{{id}}" data-devoured="{{devoured}}">
+            {{!-- <button class="getDevoured" data-id="{{id}}" data-devoured="{{devoured}}">
               EAT!
-            </button>
+            </button> --}}
             
           </li>
 

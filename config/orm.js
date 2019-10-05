@@ -10,13 +10,13 @@ function printQuestionMarks(num) {
   return arr.toString();
 };
 
-function objToSql(ob) {
+function objToSql(obj) {
   let arr = [];
 
-  for (let key in ob) {
-    let value = ob[key];
+  for (let key in obj) {
+    let value = obj[key];
 
-    if (Object.hasOwnProperty.call(ob, key)) {
+    if (Object.hasOwnProperty.call(obj, key)) {
 
       if (typeof value === "string" && value.indexOf(" ") >= 0) {
         value = "'" + value + "'";
@@ -26,13 +26,12 @@ function objToSql(ob) {
     }
   }
 
-  // translate array of strings to a single comma-separated string
   return arr.toString();
 };
 
 let orm = {
 
-  selectAll : function(tableInput, cb) {
+  selectAll : function(tableInput, callback) {
 
     let queryString = `SELECT * FROM ${tableInput};`;
 
@@ -40,7 +39,7 @@ let orm = {
 
       if (err) { throw err; };
 
-      cb(result);
+      callback(result);
 
     });
 
@@ -61,9 +60,9 @@ let orm = {
 
   },
 
-  updateOne : function(table, colVals, condition, callback) {
+  updateOne : function(table, colVals, cond, callback) {
 
-    let queryString = `UPDATE ${table} SET ${objToSql(colVals)} WHERE ${condition}`;
+    let queryString = `UPDATE ${table} SET ${objToSql(colVals)} WHERE ${cond}`;
 
     connection.query(queryString, (err, result) => {
 

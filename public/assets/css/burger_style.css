@@ -1,0 +1,22 @@
+body {
+  background: url('../img/louis-hansel-8qT_cml7M68-unsplash.jpg') no-repeat fixed;
+  background-size: cover;
+  color: white;
+}
+
+h1 {
+  margin-top: 12%;
+}
+
+input#userInput {
+  color: white;
+}
+
+li {
+  margin: 20px;
+  font-size: 20px;
+}
+
+i {
+  cursor: pointer;
+}
